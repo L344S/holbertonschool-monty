@@ -3,8 +3,8 @@
 | Tâche | Statut | Fichier |
 |-------|--------|--------|
 | Vérifier si le nombre d'arguments est correct | Done | main.c |
-| Ouvrir le fichier | En cours | .c |
-| Gérer l'erreur si le fichier ne peut pas être ouvert | Non fait |
+| Ouvrir le fichier | Done | execute.c |
+| Gérer l'erreur si le fichier ne peut pas être ouvert | Done | execute.c |
 | Vérifier si l'instruction dans le fichier est valide | Non fait |
 | Exécuter les bytecodes ligne par ligne | Non fait |
 | Gérer l'erreur si une instruction invalide est trouvée | Non fait |
