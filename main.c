@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
+	(void)argv; /* gestion temporaire d'erreur de compilation */
 	/* Error : If there are more than 2 arguments */
 	if (argc != 2)
 	{
