@@ -24,7 +24,7 @@ typedef struct stack_s
 
 		struct stack_s *prev;
 		struct stack_s *next;
-} stack_s; /* gestion temporaire d'erreur de compilation */
+} my_stack_t; /* gestion temporaire d'erreur de compilation */
 
 /**
 * struct instruction_s - opcode and its function
@@ -41,5 +41,15 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 
 } instruction_t;
+
+/* ---------- Prototypes ---------- */
+/* execute.c */
+void execute(char *file);
+/* execute_instruction.c */
+int execute_instruction(char *line, my_stack_t **stack, int line_number);
+/* functions.c */
+void push(my_stack_t **stack, int argument, unsigned int line_number);
+void pall(my_stack_t **stack, unsigned int line_number);
+void frees(my_stack_t **stack);
 
 #endif
