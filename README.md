@@ -10,7 +10,7 @@
 | Gérer l'erreur si une instruction invalide est trouvée | Non fait |
 | Gérer l'erreur si malloc échoue | Non fait |
 
-##The monty program
+## The monty program
 
 - Usage: monty file
 where file is the path to the file containing Monty byte code
