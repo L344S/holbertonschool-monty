@@ -22,6 +22,8 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE); /* quit the program on failure */
 	}
+	/* if argc == 2 then we can continue */
+	execute(argv[1]); /* handle the arguments <filename> */
 
 	return (0); /* return 0 if sucess so the program can continue */
 }
