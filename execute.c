@@ -3,14 +3,11 @@
 /**
 * execute - Entry point of the program
 * @file: Argv[1] (file to be read passed as argument)
-*
 * --------------- Description ---------------
 * Handle the argument <filename> passed to the program
 * Read the file and execute the instructions inside it
-*
 * Return: Always 0 if sucess or EXIT_FAILURE
 */
-
 void execute(char *file)
 {
 	FILE *file_that_will_be_read; /* pointer to the file that will be read */
@@ -47,7 +44,7 @@ void execute(char *file)
                 /* free the memory allocated for the line */
                 free(line);
                 /* free the memory allocated for the stack */
-                /*frees(&stack);*/
+                frees(&stack);
                 /* close the file */
                 fclose(file_that_will_be_read);
                 /* quit the program on failure */
@@ -58,7 +55,7 @@ void execute(char *file)
 	}
 
 	free(line);
-    /*frees(&stack);*/
+    frees(&stack);
 	fclose(file_that_will_be_read);
 }
 
