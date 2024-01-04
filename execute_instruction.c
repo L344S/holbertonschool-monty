@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
-* execute_instruction - Entry point of the program
-* @line: Instruction to be executed (line read from the file)
-* @stack: Pointer to the head of the stack
-* @line_number: Line number of the instruction
-* --------------- Description ---------------
-* Execute the instruction passed as argument
-* Return: Always 0 if sucess or EXIT_FAILURE
-*/
+ * execute_instruction - Entry point of the program
+ * @line: Instruction to be executed (line read from the file)
+ * @stack: Pointer to the head of the stack
+ * @line_number: Line number of the instruction
+ * --------------- Description ---------------
+ * Execute the instruction passed as argument
+ * Return: Always 0 if sucess or EXIT_FAILURE
+ */
 int execute_instruction(char *line, my_stack_t **stack, int line_number)
 {
 	char *opcode = NULL; /* store the opcode */
@@ -42,32 +42,23 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 
 	if (strcmp(opcode, "push") == 0)
 	{
-		/* if the argument is NULL */
-		if (arg_value == NULL)
+		if (arg_value == NULL) /* if the argument is NULL */
 		{
-			/* print the error message in STDERR */
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 			return (EXIT_FAILURE); /* quit the program on failure */
 		}
-		
-		/* check if all characters in the argument are digits */
-        for (size_t i = 0; i < strlen(arg_value); i++)
-        {
-			if (arg_value[i] == '-')
-			{
+		for (size_t i = 0; i < strlen(arg_value); i++)
+		{
+			if (arg_value[i] == '-') /* handle the negative number */
 				i++;
+			if (!isdigit(arg_value[i]))
+			{
+				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE); /* quit the program on failure */
 			}
-            if (!isdigit(arg_value[i]))
-            {
-                /* print the error message in STDERR */
-                dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE); /* quit the program on failure */
-            }
-        }
-
+		}
 		argument_int = atoi(arg_value); /* convert the argument to integer */
-		/* push the argument to the stack */
-		push(stack, argument_int, line_number);
+		push(stack, argument_int, line_number); /* push the argument to the stack */
 	}
 	else if (strcmp(opcode, "pall") == 0)
 		pall(stack, line_number); /* print all the values on the stack */
@@ -83,10 +74,8 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 		nop(stack, line_number);
 	else
 	{
-		/* print the error message in STDERR */
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, opcode);
 		return (EXIT_FAILURE); /* quit the program on failure */
 	}
-
 	return (EXIT_SUCCESS);
 }
