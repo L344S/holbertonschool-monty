@@ -11,37 +11,48 @@
 *
 * Return: Always 0 if sucess or EXIT_FAILURE
 */
-
 int execute_instruction(char *line, my_stack_t **stack, int line_number)
 {
 	char *opcode = NULL; /* store the opcode */
+	char *arg_value = NULL; /* store the argument */
 
-	char *argument_value = NULL; /* store the argument */
-
-	int argument_int = 0; /* store the argument converted to integer */
-
-	/* get the opcode */
+	/* get the opcode and argument */
 	opcode = strtok(line, " \n\t\r");
-	argument_value = strtok(NULL, " \n\t\r");
+	arg_value = strtok(NULL, " \n\t\r");
 
-	/* if the opcode is NULL */
+	/* if the opcode is NULL or a comment, skip the line */
 	if (opcode == NULL || opcode[0] == '#')
-	{
-		/* if it's an empty line or a comment */
-		return (EXIT_SUCCESS); /* skip the line */
-	}
+		return EXIT_SUCCESS;
+
+	/* handle opcode-specific logic */
+	return handle(opcode, arg_value, stack, line_number);
+}
+
+/**
+ * handle - Entry point of the program
+ * @opcode: Opcode to be executed
+ * @argument_value: Argument passed to the function
+ * @stack: Pointer to the head of the stack
+ * @line_number: Line number of the instruction
+ * --------------- Description ---------------
+ * Handle the opcode passed as argument
+ * Return: Always 0 if sucess or EXIT_FAILURE
+ */
+int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
+{
+	int argument_int = 0; /* store the argument converted to integer */
 
 	if (strcmp(opcode, "push") == 0)
 	{
 		/* if the argument is NULL */
-		if (argument_value == NULL)
+		if (arg_value == NULL)
 		{
 			/* print the error message in STDERR */
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			return (EXIT_FAILURE); /* quit the program on failure */
+			return EXIT_FAILURE; /* quit the program on failure */
 		}
 
-		argument_int = atoi(argument_value); /* convert the argument to integer */
+		argument_int = atoi(arg_value); /* convert the argument to integer */
 		/* push the argument to the stack */
 		push(stack, argument_int, line_number);
 	}
@@ -73,7 +84,8 @@ int execute_instruction(char *line, my_stack_t **stack, int line_number)
 	{
 		/* print the error message in STDERR */
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, opcode);
-		return (EXIT_FAILURE); /* quit the program on failure */
+		return EXIT_FAILURE; /* quit the program on failure */
 	}
-	return (EXIT_SUCCESS);
+
+	return EXIT_SUCCESS;
 }

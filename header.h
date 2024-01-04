@@ -47,6 +47,7 @@ typedef struct instruction_s
 void execute(char *file);
 /* execute_instruction.c */
 int execute_instruction(char *line, my_stack_t **stack, int line_number);
+int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number);
 /* functions.c */
 void push(my_stack_t **stack, int argument, unsigned int line_number);
 void pall(my_stack_t **stack, unsigned int line_number);
