@@ -53,6 +53,7 @@ void pall(my_stack_t **stack, unsigned int line_number);
 void pint(my_stack_t **stack, unsigned int line_number);
 void pop(my_stack_t **stack, unsigned int line_number);
 void swap(my_stack_t **stack, unsigned int line_number);
+void add(my_stack_t **stack, unsigned int line_number);
 void frees(my_stack_t **stack);
 
 #endif
