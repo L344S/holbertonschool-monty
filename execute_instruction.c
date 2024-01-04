@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
 * execute_instruction - Entry point of the program
