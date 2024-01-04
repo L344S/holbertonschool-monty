@@ -57,7 +57,7 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
             {
                 /* print the error message in STDERR */
                 dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-                return (EXIT_FAILURE); /* quit the program on failure */
+                exit(EXIT_FAILURE); /* quit the program on failure */
             }
         }
 
