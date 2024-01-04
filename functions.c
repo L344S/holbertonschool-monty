@@ -93,3 +93,26 @@ void pop(my_stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(temp);
 }
+
+/**
+* swap - Entry point of the program
+* @stack: Pointer to the head of the stack
+* @line_number: Line number of the instruction
+* --------------- Description ---------------
+* Swap the top two elements of the stack
+* Return: Always 0 if success or EXIT_FAILURE
+*/
+void swap(my_stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
+}
