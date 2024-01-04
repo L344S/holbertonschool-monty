@@ -49,10 +49,14 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 			return (EXIT_FAILURE); /* quit the program on failure */
 		}
-
+		
 		/* check if all characters in the argument are digits */
         for (size_t i = 0; i < strlen(arg_value); i++)
         {
+			if (arg_value[i] == '-')
+			{
+				i++;
+			}
             if (!isdigit(arg_value[i]))
             {
                 /* print the error message in STDERR */
