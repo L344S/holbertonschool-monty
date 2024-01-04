@@ -1,7 +1,7 @@
 #include "header.h"
 
 /**
-* add - adds the top two elements of the stack
+* add - Entry point of the program
 * @stack: Pointer to the head of the stack
 * @line_number: Line number of the instruction
 * --------------- Description ---------------
@@ -22,4 +22,18 @@ void add(my_stack_t **stack, unsigned int line_number)
 	temp = *stack;
 	*stack = (*stack)->next;
 	free(temp);
+}
+
+/**
+* nop - Entry point of the program
+* @stack: Pointer to the head of the stack
+* @line_number: Line number of the instruction
+* --------------- Description ---------------
+* Doesn't do anything
+* Return: Nothing
+*/
+void nop(my_stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
 }
