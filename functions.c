@@ -70,3 +70,26 @@ void pint(my_stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+* pop - Entry point of the program
+* @stack: Pointer to the head of the stack
+* @line_number: Line number of the instruction
+* --------------- Description ---------------
+* Remove the top element of the stack
+* Return: Always 0 if success or EXIT_FAILURE
+*/
+void pop(my_stack_t **stack, unsigned int line_number)
+{
+	my_stack_t *temp;
+
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	*stack = (*stack)->next;
+	free(temp);
+}
