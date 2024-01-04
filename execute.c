@@ -48,6 +48,6 @@ void execute(char *file)
 		line_number++; /* increment the line number */
 	}
 	free(line);
-	frees(&stack);
+	frees(stack);
 	fclose(file_that_will_be_read);
 }
