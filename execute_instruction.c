@@ -50,6 +50,17 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 			return (EXIT_FAILURE); /* quit the program on failure */
 		}
 
+		/* check if all characters in the argument are digits */
+        for (size_t i = 0; i < strlen(arg_value); i++)
+        {
+            if (!isdigit(arg_value[i]))
+            {
+                /* print the error message in STDERR */
+                dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+                return (EXIT_FAILURE); /* quit the program on failure */
+            }
+        }
+
 		argument_int = atoi(arg_value); /* convert the argument to integer */
 		/* push the argument to the stack */
 		push(stack, argument_int, line_number);
