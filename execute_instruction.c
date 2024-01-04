@@ -5,10 +5,8 @@
 * @line: Instruction to be executed (line read from the file)
 * @stack: Pointer to the head of the stack
 * @line_number: Line number of the instruction
-*
 * --------------- Description ---------------
 * Execute the instruction passed as argument
-*
 * Return: Always 0 if sucess or EXIT_FAILURE
 */
 int execute_instruction(char *line, my_stack_t **stack, int line_number)
@@ -22,10 +20,10 @@ int execute_instruction(char *line, my_stack_t **stack, int line_number)
 
 	/* if the opcode is NULL or a comment, skip the line */
 	if (opcode == NULL || opcode[0] == '#')
-		return EXIT_SUCCESS;
+		return (EXIT_SUCCESS);
 
 	/* handle opcode-specific logic */
-	return handle(opcode, arg_value, stack, line_number);
+	return (handle(opcode, arg_value, stack, line_number));
 }
 
 /**
@@ -49,7 +47,7 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 		{
 			/* print the error message in STDERR */
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			return EXIT_FAILURE; /* quit the program on failure */
+			return (EXIT_FAILURE); /* quit the program on failure */
 		}
 
 		argument_int = atoi(arg_value); /* convert the argument to integer */
@@ -84,8 +82,8 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 	{
 		/* print the error message in STDERR */
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, opcode);
-		return EXIT_FAILURE; /* quit the program on failure */
+		return (EXIT_FAILURE); /* quit the program on failure */
 	}
 
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
