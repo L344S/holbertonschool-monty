@@ -50,6 +50,7 @@ int execute_instruction(char *line, my_stack_t **stack, int line_number);
 /* functions.c */
 void push(my_stack_t **stack, int argument, unsigned int line_number);
 void pall(my_stack_t **stack, unsigned int line_number);
+void pint(my_stack_t **stack, unsigned int line_number);
 void frees(my_stack_t **stack);
 
 #endif

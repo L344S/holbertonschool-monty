@@ -36,10 +36,8 @@ void push(my_stack_t **stack, int argument, unsigned int line_number)
 * pall - Entry point of the program
 * @stack: Pointer to the head of the stack
 * @line_number: Line number of the instruction
-*
 * --------------- Description ---------------
 * Print all the values on the stack
-*
 * Return: Always 0 if sucess or EXIT_FAILURE
 */
 void pall(my_stack_t **stack, unsigned int line_number)
@@ -53,4 +51,22 @@ void pall(my_stack_t **stack, unsigned int line_number)
 		printf("%d\n", current_node->n);
 		current_node = current_node->next;
 	}
+}
+
+/**
+* pint - Entry point of the program
+* @stack: Pointer to the head of the stack
+* @line_number: Line number of the instruction
+* --------------- Description ---------------
+* Print the value at the top of the stack
+* Return: Always 0 if success or EXIT_FAILURE
+*/
+void pint(my_stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
