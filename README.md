@@ -10,7 +10,18 @@
 | Gérer l'erreur si une instruction invalide est trouvée | Non fait |
 | Gérer l'erreur si malloc échoue | Non fait |
 
-## The monty program
+## ✿ Repository Files
+
+Here is a list of the main files in the repository and a brief description of their role:
+
+| File Name | Role | Functions |
+| --------- | ---- | --------- |
+| `monty.h` | This is the header file. It contains all function prototypes and structures used in the program. | None |
+| `main.c` | The entry point of the program. It checks the number of arguments and calls the `execute` function with the filename as an argument. | `main` |
+| `execute.c` | This file contains the `execute` function which is responsible for executing the instructions found in the Monty byte code file. The `execute` function opens the file and calls the `parseLine` function. The `parseLine` function reads a line from the Monty file, tokenizes it to separate the opcode and its argument, and then calls the `handle` function. The `handle` function compares the opcode and, if it matches a known opcode, calls the appropriate function to execute the instruction. | `execute`, `parseLine`, `handle` |
+| `opcode.c` | This file contains the implementation of various opcodes (instructions) that can be found in a Monty byte code file. These functions manipulate the stack or queue according to the opcode. | `push`, `pall`, `pint`, `pop`, `swap` |
+| `opcode2.c` | This file also contains the implementation of various opcodes. It's likely that the opcodes were split into two files for organizational purposes. | `add`, `nop` |
+| `frees.c` | This file contains the `frees` function which is responsible for freeing all allocated memory. It's likely used to clean up memory before the program exits. | `frees` |
 
 - Usage: monty file
 where file is the path to the file containing Monty byte code

@@ -25,7 +25,7 @@ typedef struct stack_s
 
 		struct stack_s *prev;
 		struct stack_s *next;
-} my_stack_t; /* gestion temporaire d'erreur de compilation */
+} my_stack_t;
 
 /**
 * struct instruction_s - opcode and its function
@@ -58,7 +58,7 @@ void swap(my_stack_t **stack, unsigned int line_number);
 /* functions2.c */
 void add(my_stack_t **stack, unsigned int line_number);
 void nop(my_stack_t **stack, unsigned int line_number);
-/* helpers.c */
+/* frees.c */
 void frees(my_stack_t **stack);
 
 #endif
