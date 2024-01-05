@@ -115,15 +115,15 @@ int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number)
 	else if (strcmp(opcode, "pall") == 0)
 		pall(stack, line_number); /* print all the values on the stack */
 	else if (strcmp(opcode, "pint") == 0)
-		pint(stack, line_number);
+		pint(stack, line_number); /* print the value at the top of the stack */
 	else if (strcmp(opcode, "pop") == 0)
-		pop(stack, line_number);
+		pop(stack, line_number); /* remove the top element of the stack */
 	else if (strcmp(opcode, "swap") == 0)
-		swap(stack, line_number);
+		swap(stack, line_number); /* swap the top two elements of the stack */
 	else if (strcmp(opcode, "add") == 0)
-		add(stack, line_number);
+		add(stack, line_number); /* add the top two elements of the stack */
 	else if (strcmp(opcode, "nop") == 0)
-		nop(stack, line_number);
+		nop(stack, line_number); /* do nothing */
 	else
 	{
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, opcode);

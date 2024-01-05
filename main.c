@@ -11,7 +11,6 @@
 *
 * Return: Always 0 if sucess or EXIT_FAILURE
 */
-
 int main(int argc, char **argv)
 {
 	/* Error : If there are more than 2 arguments */
