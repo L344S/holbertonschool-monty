@@ -48,13 +48,13 @@ typedef struct instruction_s
 void execute(char *file);
 int parseLine(char *line, my_stack_t **stack, int line_number);
 int handle(char *opcode, char *arg_value, my_stack_t **stack, int line_number);
-/* functions.c */
+/* opcode.c */
 void push(my_stack_t **stack, int argument, unsigned int line_number);
 void pall(my_stack_t **stack, unsigned int line_number);
 void pint(my_stack_t **stack, unsigned int line_number);
 void pop(my_stack_t **stack, unsigned int line_number);
 void swap(my_stack_t **stack, unsigned int line_number);
-/* functions2.c */
+/* opcode2.c */
 void add(my_stack_t **stack, unsigned int line_number);
 void nop(my_stack_t **stack, unsigned int line_number);
 /* frees.c */
