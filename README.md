@@ -11,10 +11,10 @@
 The Monty program is a scripting language interpreter that reads and executes instructions from a file (.m) line by line. It is designed to use a unique stack with specific instructions to manipulate it.
 
 ### ✿ Flowchart
-![Screenshot](./Docs/flowchart.png)
+![Screenshot](./docs/flowchart.png)
 
 ### ✿ Screenshot
-![Screenshot](./Docs/screenshot.png)
+![Screenshot](./docs/screenshot.png)
 
 ### ✿ Repository Files
 
