@@ -1,16 +1,22 @@
 # MONTY PROGRAM
 
-| Tâche | Statut | Fichier |
-|-------|--------|--------|
-| Vérifier si le nombre d'arguments est correct | Done | main.c |
-| Ouvrir le fichier | Done | execute.c |
-| Gérer l'erreur si le fichier ne peut pas être ouvert | Done | execute.c |
-| Vérifier si l'instruction dans le fichier est valide | Non fait |
-| Exécuter les bytecodes ligne par ligne | Non fait |
-| Gérer l'erreur si une instruction invalide est trouvée | Non fait |
-| Gérer l'erreur si malloc échoue | Non fait |
+## Table of Contents
+- [Description](#description)
+- [Run Locally](#run-locally)
+- [Example of use](#example-of-use)
+- [Commands](#commands)
+- [Authors](#authors)
 
-## ✿ Repository Files
+## Description
+The Monty program is a scripting language interpreter that reads and executes instructions from a file (.m) line by line. It is designed to use a unique stack with specific instructions to manipulate it.
+
+### ✿ Flowchart
+![Screenshot](./Docs/flowchart.png)
+
+### ✿ Screenshot
+![Screenshot](./Docs/screenshot.png)
+
+### ✿ Repository Files
 
 Here is a list of the main files in the repository and a brief description of their role:
 
@@ -23,21 +29,90 @@ Here is a list of the main files in the repository and a brief description of th
 | `opcode2.c` | This file also contains the implementation of various opcodes. It's likely that the opcodes were split into two files for organizational purposes. | `add`, `nop` |
 | `frees.c` | This file contains the `frees` function which is responsible for freeing all allocated memory. It's likely used to clean up memory before the program exits. | `frees` |
 
-- Usage: monty file
-where file is the path to the file containing Monty byte code
+### ✿ Project Tasks
+| Task | Description | Status |
+| ---- | ----------- | ------ |
+| 1.   | Create the header file | Done |
+| 2.   | Implement the main function to check the number of arguments and print the appropriate error message if needed | Done |
+| 3.   | Implement the functionality to open the file and print an error message if it's not possible | Done |
+| 4.   | Implement the functionality to read the file line by line | Done |
+| 5.   | Implement the functionality to parse the file's text into opcode and argument | Done |
+| 6.   | Implement the functionality to handle invalid instructions and print the appropriate error message | Done |
+| 7.   | Implement the functionality to execute the correct function for the given opcode | Done |
+| 8.   | Ensure that the program stops executing if an error occurs or if it has executed all lines of the file | Done |
+| 9.   | Use malloc and free for memory management and avoid memory leaks | Done |
 
-- If the user does not give any file or more than one argument to your program, print the error message USAGE: monty file, followed by a new line, and exit with the status EXIT_FAILURE
+## Run Locally
+### ✿ Prerequisites
+To install and run this program, ensure you have the following:
 
-- If, for any reason, it’s not possible to open the file, print the error message Error: Can't open file <file>, followed by a new line, and exit with the status EXIT_FAILURE
-where <file> is the name of the file
+- Operating System: Ubuntu 20.04 LTS
+- Compiler: gcc
+- Compiler Options: -Wall -Werror -Wextra -pedantic -std=gnu89
 
-- If the file contains an invalid instruction, print the error message L<line_number>: unknown instruction <opcode>, followed by a new line, and exit with the status EXIT_FAILURE
-where is the line number where the instruction appears.
-Line numbers always start at 1
+### ✿ Installation
+Use the following command to install the monty program:
 
-- The monty program runs the bytecodes line by line and stop if either:
-it executed properly every line of the file  
-it finds an error in the file an error occured  
+```bash
+# Clone the repository
+git clone https://github.com/L344S/holbertonschool-monty.git
 
-- If you can’t malloc anymore, print the error message Error: malloc failed, followed by a new line, and exit with status EXIT_FAILURE.
-You have to use malloc and free and are not allowed to use any other function from man malloc (realloc, calloc, …)
+# Navigate to the project directory
+cd holbertonschool-monty
+
+# Compile the files
+gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+
+# Run the monty program :
+./monty <file>
+```
+
+## Example of use
+```sh
+leasel@MacBook-Pro-de-Lea holbertonschool-monty % cat bytecodes/06.m    
+push 1
+pint
+push 2
+pint
+push 3
+pint                 
+leasel@MacBook-Pro-de-Lea holbertonschool-monty % ./monty bytecodes/06.m
+1
+2
+3
+leasel@MacBook-Pro-de-Lea holbertonschool-monty %
+```
+
+```sh
+leasel@MacBook-Pro-de-Lea holbertonschool-monty % cat bytecodes/09.m
+push 1
+push 2
+push 3
+pall
+swap
+pall                
+leasel@MacBook-Pro-de-Lea holbertonschool-monty % ./monty bytecodes/09.m
+3
+2
+1
+2
+3
+1
+leasel@MacBook-Pro-de-Lea holbertonschool-monty % 
+```
+
+## Commands
+| Opcode  | Description |
+| -------- |:------------|
+| push     | Pushes an element to the stack |
+| pall     | Prints all values on the stack, starting from the top |
+| pint     | Prints the value at the top of the stack |
+| pop      | Removes the top element of the stack |
+| swap     | Swaps the top two elements of the stack |
+| add      | Adds the top two elements of the stack |
+| nop      | Does nothing |
+
+## Authors
+- [@Yazgahar](https://www.github.com/Yazgahar)
+- [@L344S](https://www.github.com/L344S)
+
