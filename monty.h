@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <ctype.h>
 
+
 /* ---------- Structures ---------- */
 
 /**
@@ -43,7 +44,9 @@ typedef struct instruction_s
 
 } instruction_t;
 
+
 /* ---------- Prototypes ---------- */
+
 /* execute.c */
 void execute(char *file);
 int parseLine(char *line, my_stack_t **stack, int line_number);
