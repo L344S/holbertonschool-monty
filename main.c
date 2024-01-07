@@ -8,6 +8,7 @@
 * --------------- Description ---------------
 * If the user does not give any file or more than one argument
 * to your program print the error message
+* Call the function execute to handle the arguments
 *
 * Return: Always 0 if sucess or EXIT_FAILURE
 */

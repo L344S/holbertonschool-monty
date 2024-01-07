@@ -9,7 +9,7 @@
 */
 void frees(my_stack_t **stack)
 {
-	/* Create a pointer to the current node in the stack */
+	/* Create a pointer to the current node in the stack (top/head) */
 	my_stack_t *current_node = *stack;
 
 	/* Loop through the stack until there are no more nodes */
@@ -21,5 +21,5 @@ void frees(my_stack_t **stack)
 		free(current_node);
 		/* Update the current node pointer to the new top of the stack */
 		current_node = *stack;
-	}
+	} /* End of the loop when there are no more nodes */
 }
